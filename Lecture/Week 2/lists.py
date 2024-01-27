@@ -44,3 +44,15 @@ print(my_list[:5])
 print()
 # In this case, slice notation begins from the start to the end (exclusive)
 
+# Checking if items exists in a list
+if "Alex" in my_list:
+    print("Alex is part of the list")
+else:
+    print("Alex isn't here somewhere")
+print()
+
+if "Monica" in my_list:
+    print("Monica is here")
+else:
+    print("Monica is nowhere to be seen in this list")
+print()
