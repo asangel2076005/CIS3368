@@ -4,3 +4,5 @@ my_dict = {
     "last_name": "Doe",
     "birth_year": 2001
 }
+
+print(my_dict)
