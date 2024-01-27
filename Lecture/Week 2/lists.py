@@ -78,3 +78,31 @@ my_list.extend(more_colors)
 print(my_list)
 print()
 
+# Removing List items
+my_list.pop(0)  # Remove items at index
+print(my_list)
+print()
+
+del my_list[-10]  # Delete last item
+print(my_list)
+print()
+
+# Iterating over a list
+for item in my_list:
+    print(item)
+print()
+# Everytime an iteration is rerouted, the previous variable referencing the previous object gets
+# into the Garbage collector
+
+# Sorting lists
+# my_list.sort()
+# Note: Only lists with the one data type can use this method, otherwise a TypeError will show
+
+colors = ["red", "orange", "blue", "green", "black"]
+print(my_list)
+colors.sort()
+print(colors)
+print()
+
+# Clearing a list to free up some memory or reuse a list name
+my_list.clear()
