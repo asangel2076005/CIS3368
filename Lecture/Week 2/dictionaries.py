@@ -35,3 +35,14 @@ print(my_dict)
 
 my_dict.update({"birth_year": 1900})
 print(my_dict)
+
+if "children" in my_dict:
+    print("This person has children")
+print()
+
+# Update / Add non-existent items in dictionaries
+my_dict["father"] = "Jeff"
+print(my_dict)
+
+# Note: Python's dynamic behavior forces it to have a lot of overhead which makes it slower
+
