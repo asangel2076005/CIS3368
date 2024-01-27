@@ -56,3 +56,25 @@ if "Monica" in my_list:
 else:
     print("Monica is nowhere to be seen in this list")
 print()
+
+# Updating List items
+my_list[1] = 500
+print(my_list)
+print()
+
+# Inserting an item to list
+my_list.insert(2, "Totally unrelated string")
+print(my_list)
+print()
+
+# Adding an item to the end of the list
+my_list.append("YELLOW")
+print(my_list)
+print()
+
+# Adding 2 lists. This fuses both lists
+more_colors = ["red", "blue", "green"]
+my_list.extend(more_colors)
+print(my_list)
+print()
+
