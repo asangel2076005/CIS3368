@@ -43,6 +43,24 @@ print()
 # Update / Add non-existent items in dictionaries
 my_dict["father"] = "Jeff"
 print(my_dict)
+print()
+# Note: If it doesn't exist, adds. If it exists, updates it
 
 # Note: Python's dynamic behavior forces it to have a lot of overhead which makes it slower
 
+# Removing dictionary items
+my_dict.pop("father")
+print(my_dict)
+
+my_dict["father"] = "Jeff"
+del my_dict["father"]
+print(my_dict)
+print()
+
+# Clearing a dictionary
+my_dict.clear()
+print(my_dict)
+print()
+
+# Note: Clearing a dictionary serves a purpose of reusing a dictionary in different instances
+# Adds another purpose for reusability
