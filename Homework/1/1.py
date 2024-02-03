@@ -33,5 +33,23 @@ if __name__ == "__main__":
     print("Drinks Menu: ")
     for drink in rows:
         print(f"{drink['id']} - {drink['drinkname'].capitalize()}: ${drink['price']}")
+    print()
         
+    while True:
+        user_choice = input("Start an order or get information about a drink?  \
+                    \ns - Start an order \
+                    \ng - Get drink information \
+                    \nq - Get total\n").lower().strip()
+        print()
         
+        total = []
+        
+        if user_choice == "s":
+            print(user_choice)
+        elif user_choice == "g":
+            print(user_choice)
+        elif user_choice == "q":
+            print(user_choice)
+        else:
+            print("Invalid choice, try again")
+            continue
