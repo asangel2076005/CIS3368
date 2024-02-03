@@ -9,7 +9,7 @@ def create_con(hostname, username, user_password, dbname):
             host=hostname,
             user=username,
             password=user_password,
-            databse=dbname
+            database=dbname
         )
         print("Connection Success")
 
@@ -27,5 +27,9 @@ if __name__ == "__main__":
 
     cursor = conn.cursor(dictionary=True)
     sql = "SELECT * FROM users"  # String we want to deliver
-
+    
     cursor.execute(sql)
+    rows = cursor.fetchall()
+
+    for user in rows:
+        print(user)
