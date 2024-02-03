@@ -11,7 +11,6 @@ def create_con(hostname, username, user_password, dbname):
             password=user_password,
             database=dbname
         )
-        print("Connection Success")
 
     except Error as e:
         print(f"The error {e} occurred")
@@ -31,5 +30,8 @@ if __name__ == "__main__":
     cursor.execute(sql)
     rows = cursor.fetchall()
     
-    for user in rows:
-        print(f"{user['firstname']}")
+    print("Drinks Menu: ")
+    for drink in rows:
+        print(f"{drink['id']} - {drink['drinkname'].capitalize()}: ${drink['price']}")
+        
+        
