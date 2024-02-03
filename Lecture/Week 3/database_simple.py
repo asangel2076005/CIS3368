@@ -31,5 +31,6 @@ if __name__ == "__main__":
     cursor.execute(sql)
     rows = cursor.fetchall()
 
+    print("These are the names in the database: ")
     for user in rows:
-        print(user)
+        print(f"{user['firstname']}")
