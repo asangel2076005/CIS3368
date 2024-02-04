@@ -21,7 +21,7 @@ def create_con(hostname, username, user_password, dbname):
 if __name__ == "__main__":
     conn = create_con("cis3368spring.cb0eqkk045ol.us-east-1.rds.amazonaws.com",
                       "angeloangel",
-                      "serdon17",
+                      "angelopassword",
                       "cis3368springdb")
 
     cursor = conn.cursor(dictionary=True)
@@ -39,7 +39,7 @@ if __name__ == "__main__":
     # Infinite loop until user finishes ordering and asks for receipt
     while True:
         user_choice = input("Start an order or get information about a drink?  \
-                    \ns - Start an order \
+                    \ns - Add order \
                     \ng - Get drink information \
                     \nq - Get total\n").lower().strip()
         print()
@@ -48,7 +48,8 @@ if __name__ == "__main__":
         
         if user_choice == "s":
             print(user_choice)
-            
+
+        # Display drink information according to user choice
         elif user_choice == "g":
             while True:
                 drink_id = input("Enter the drink ID number associated with the drink: ").strip()
@@ -57,6 +58,7 @@ if __name__ == "__main__":
                 else:
                     print("Invalid domain, try again")
 
+            # Goes through every row. Only output a particular row that matches user's choice of drink id
             for user in rows:
                 if user["id"] == int(drink_id):
                     print("Drink information")
@@ -70,6 +72,7 @@ if __name__ == "__main__":
             print(user_choice)
             break
 
+        # Notifies user of an invalid choice
         else:
             print("Invalid choice, try again")
             continue
