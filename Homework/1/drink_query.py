@@ -11,10 +11,8 @@ def create_con(hostname, username, user_password, dbname):
             password=user_password,
             database=dbname
         )
-
     except Error as e:
         print(f"The error {e} occurred")
-
     return connection
 
 
@@ -35,7 +33,9 @@ if __name__ == "__main__":
     for drink in rows:
         print(f"{drink['id']} - {drink['drinkname'].capitalize()}: ${drink['price']}")
     print()
-        
+
+    total = []
+    drinks = []
     # Infinite loop until user finishes ordering and asks for receipt
     while True:
         user_choice = input("Start an order or get information about a drink?  \
@@ -43,11 +43,23 @@ if __name__ == "__main__":
                     \ng - Get drink information \
                     \nq - Get total\n").lower().strip()
         print()
-        
-        total = []
-        
+
+        # Adds user choices into their corresponding lists
         if user_choice == "s":
-            print(user_choice)
+            while True:
+                drink_id = input("Enter the drink ID number associated with the drink: ").strip()
+                if ((int(drink_id) > 0) and (int(drink_id) <= 10)) and drink_id.isalnum():
+                    break
+                else:
+                    print("Invalid domain, try again")
+
+            for user in rows:
+                if user["id"] == int(drink_id):
+                    total.append(user['price'])
+                    drinks.append(user['drinkname'])
+                else:
+                    continue
+            print()
 
         # Display drink information according to user choice
         elif user_choice == "g":
@@ -68,11 +80,25 @@ if __name__ == "__main__":
                     continue
             print()
 
+        # Receipts the lists of orders the user have
         elif user_choice == "q":
-            print(user_choice)
+            if len(total) == 0:
+                print("You didn't order anything...")
+                print("No receipt for you")
+            else:
+                print(f"{'RECEIPT':^31}")
+                print(f"{'Drinks':<15}|{'Price':>15}")
+                print(f"{'-'*15}+{'-'*15}")
+                for item in range(len(total)):
+                    duh = f"${total[item]}"
+                    print(f"{drinks[item]:<15}|{duh:>15}")
+                sum_total = f"${sum(total)}"
+                print("-"*31)
+                print(f"Total:{' '*14}{sum_total:>10}")
             break
 
         # Notifies user of an invalid choice
         else:
             print("Invalid choice, try again")
+            print()
             continue
