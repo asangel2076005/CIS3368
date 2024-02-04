@@ -33,4 +33,6 @@ if __name__ == "__main__":
 
     print("These are the names in the database: ")
     for user in rows:
-        print(f"{user['firstname']}")
+        print(f"{user}")
+
+    print(rows)

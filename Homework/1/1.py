@@ -50,17 +50,26 @@ if __name__ == "__main__":
             print(user_choice)
             
         elif user_choice == "g":
-            print(user_choice)
             while True:
-                drink_id = input("Enter the drink ID number associated with the drink: ")
+                drink_id = input("Enter the drink ID number associated with the drink: ").strip()
                 if ((int(drink_id) > 0) and (int(drink_id) <= 10)) and drink_id.isalnum():
-                    print("Pass")
                     break
                 else:
                     print("Invalid domain, try again")
-            
+
+            for user in rows:
+                if user["id"] == int(drink_id):
+                    print("Drink information")
+                    print(f"Description: {user['descript']}")
+                    print(f"Color: {user['color']}")
+                else:
+                    continue
+            print()
+
         elif user_choice == "q":
             print(user_choice)
+            break
+
         else:
             print("Invalid choice, try again")
             continue
