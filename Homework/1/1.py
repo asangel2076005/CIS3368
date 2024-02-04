@@ -30,11 +30,13 @@ if __name__ == "__main__":
     cursor.execute(sql)
     rows = cursor.fetchall()
     
+    # Runs menu once throughout the program run 
     print("Drinks Menu: ")
     for drink in rows:
         print(f"{drink['id']} - {drink['drinkname'].capitalize()}: ${drink['price']}")
     print()
         
+    # Infinite loop until user finishes ordering and asks for receipt
     while True:
         user_choice = input("Start an order or get information about a drink?  \
                     \ns - Start an order \
@@ -46,8 +48,15 @@ if __name__ == "__main__":
         
         if user_choice == "s":
             print(user_choice)
+            
         elif user_choice == "g":
             print(user_choice)
+            
+            try:
+                drink_id = int(input("Enter the drink ID number associated with the drink"))
+            except ValueError:
+                pass
+            
         elif user_choice == "q":
             print(user_choice)
         else:
