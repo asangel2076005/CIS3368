@@ -51,11 +51,13 @@ if __name__ == "__main__":
             
         elif user_choice == "g":
             print(user_choice)
-            
-            try:
-                drink_id = int(input("Enter the drink ID number associated with the drink"))
-            except ValueError:
-                pass
+            while True:
+                drink_id = input("Enter the drink ID number associated with the drink: ")
+                if ((int(drink_id) > 0) and (int(drink_id) <= 10)) and drink_id.isalnum():
+                    print("Pass")
+                    break
+                else:
+                    print("Invalid domain, try again")
             
         elif user_choice == "q":
             print(user_choice)
