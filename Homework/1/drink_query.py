@@ -2,6 +2,7 @@ import mysql.connector
 from mysql.connector import Error
 
 
+# Connect to my database
 def create_con(hostname, username, user_password, dbname):
     connection = None
     try:
@@ -14,6 +15,23 @@ def create_con(hostname, username, user_password, dbname):
     except Error as e:
         print(f"The error {e} occurred")
     return connection
+
+
+# Asks user to enter a valid ID number within a domain, otherwise repeat until satisfied
+def get_valid_drink_id():
+    drink_id = None
+
+    while True:
+        try:
+            drink_id = int(input("Enter the drink ID number associated with the drink: "))
+        except ValueError:
+            print("Enter a digit only\n")
+            continue
+
+        if (drink_id > 0) and (drink_id <= 10):
+            return drink_id
+        else:
+            print("Invalid domain, try again\n")
 
 
 if __name__ == "__main__":
@@ -46,15 +64,10 @@ if __name__ == "__main__":
 
         # Adds user choices into their corresponding lists
         if user_choice == "s":
-            while True:
-                drink_id = input("Enter the drink ID number associated with the drink: ").strip()
-                if ((int(drink_id) > 0) and (int(drink_id) <= 10)) and drink_id.isalnum():
-                    break
-                else:
-                    print("Invalid domain, try again")
+            selected_drink_id = get_valid_drink_id()
 
             for user in rows:
-                if user["id"] == int(drink_id):
+                if user["id"] == int(selected_drink_id):
                     total.append(user['price'])
                     drinks.append(user['drinkname'])
                 else:
@@ -63,17 +76,12 @@ if __name__ == "__main__":
 
         # Display drink information according to user choice
         elif user_choice == "g":
-            while True:
-                drink_id = input("Enter the drink ID number associated with the drink: ").strip()
-                if ((int(drink_id) > 0) and (int(drink_id) <= 10)) and drink_id.isalnum():
-                    break
-                else:
-                    print("Invalid domain, try again")
+            selected_drink_id = get_valid_drink_id()
 
             # Goes through every row. Only output a particular row that matches user's choice of drink id
             for user in rows:
-                if user["id"] == int(drink_id):
-                    print("Drink information")
+                if user["id"] == int(selected_drink_id):
+                    print("\nDrink information")
                     print(f"Description: {user['descript']}")
                     print(f"Color: {user['color']}")
                 else:
@@ -92,7 +100,7 @@ if __name__ == "__main__":
                 for item in range(len(total)):
                     duh = f"${total[item]}"
                     print(f"{drinks[item]:<15}|{duh:>15}")
-                sum_total = f"${sum(total)}"
+                sum_total = f"${sum(total):.2f}"
                 print("-"*31)
                 print(f"Total:{' '*14}{sum_total:>10}")
             break
