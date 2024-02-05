@@ -19,8 +19,6 @@ def create_con(hostname, username, user_password, dbname):
 
 # Asks user to enter a valid ID number within a domain, otherwise repeat until satisfied
 def get_valid_drink_id():
-    drink_id = None
-
     while True:
         try:
             drink_id = int(input("Enter the drink ID number associated with the drink: "))
