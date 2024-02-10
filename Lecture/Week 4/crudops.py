@@ -45,4 +45,24 @@ invoice_description = "Harry Potter Books"
 # Make sure that strings have quotes in them within the query
 query = f"INSERT INTO invoices (amount, description, user_id) " \
         f"VALUES ({invoice_amount}, '{invoice_description}', {invoice_from_user})"
-execute_query(connection, query)
+
+# execute_query(connection, query)  # Commented to not make anymore additions of the same entity
+
+# Update Invoice Record
+new_amount = 30
+update_invoice_query = f"""
+UPDATE invoices 
+SET amount = {new_amount}
+WHERE id = {invoice_from_user}
+"""
+# execute_query(connection, update_invoice_query)  # Commented to not do again since its reflected in db
+
+# Delete Invoice Record from Invoice Table
+# Most of the time, you want records to be inactive instead of deleted
+invoice_to_delete = 1
+delete_statement = f"DELETE FROM invoices WHERE id = {invoice_to_delete}"
+# execute_query(connection, delete_statement)  # Commented for same reasons
+
+#Delete invoice table
+delete_table_statement = "DROP TABLE invoice"
+execute_query(connection, delete_table_statement)
