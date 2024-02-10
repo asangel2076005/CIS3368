@@ -2,7 +2,7 @@ import mysql.connector
 from mysql.connector import Error
 
 
-def create_con(hostname, username, user_password, database_name):
+def create_connection(hostname, username, user_password, database_name):
     connection = None
     try:
         connection = mysql.connector.connect(
@@ -33,7 +33,6 @@ def execute_query(connection, query):
 def execute_read_query(connection, query):
     cursor = connection.cursor(dictionary=True)
     result = None
-
     try:
         cursor.execute(query)
         result = cursor.fetchall()
