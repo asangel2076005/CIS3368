@@ -1,8 +1,6 @@
 import flask
-from flask import jsonify
-from flask import request
-from sql_helper import create_connection
-from sql_helper import execute_read_query
+from flask import jsonify, request
+from sql_helper import create_connection, execute_read_query
 import creds
 
 
@@ -34,6 +32,9 @@ if __name__ == "__main__":
             "color": "read"
         }
     ]
+
+
+
 
 
     @app.route('/', methods=['GET'])  # default url without any routing
@@ -79,7 +80,7 @@ if __name__ == "__main__":
 
         return "Add request successful!"
 
-    @app.route("/api/cars", methods=["DELETE"])  # delete a car
+    @app.route("/api/car", methods=["DELETE"])  # delete a car
     def delete_example():
         request_data = request.get_json()
         id_to_delete = request_data["id"]
@@ -92,25 +93,37 @@ if __name__ == "__main__":
                 del(cars[i])
         return "delete request successful"
 
-    @app.route("/api/users", methods=["GET"])  # api to get users from the db table in AWS by id in JSON response
+    @app.route("/api/cars", methods=["PUT"])  # api to update an entity instance
+    def api_update_user():
+        pass
+        # figure this one out later
+
+    # This area deals with my database
+    my_creds = creds.Creds()
+    connection = create_connection(my_creds.connection_string,
+                                   my_creds.user_name,
+                                   my_creds.password,
+                                   my_creds.database_name)
+    sql = "SELECT * FROM users"
+    users = execute_read_query(connection, sql)
+
+    @app.route("/api/users/all", methods=["GET"])  # api to get users from the db table in AWS by id in JSON response
     def api_users_id():
-        if "id" in request.args: # only if an id is provided, proceed
-            id = int(request.args["id"])
+        return jsonify(users)
+
+    # http://127.0.0.1:5000/api/users?id=1
+    @app.route('/api/users', methods=['GET'])  # get a single car by id
+    def api_id_user():
+        if "id" in request.args:  # only if an id is provided, proceed
+            id = int(request.args['id'])
         else:
             return "ERROR: no ID provided"
 
-        my_creds = creds.Creds()
-        connection = create_connection(my_creds.connection_string,
-                                       my_creds.user_name,
-                                       my_creds.password,
-                                       my_creds.database_name)
-        sql = f"SELECT * FROM users"
-        users = execute_read_query(connection, sql)
-        results = []
-
+        results = []  # resulting car(s) to return
         for user in users:
             if user["id"] == id:
                 results.append(user)
+
         return jsonify(results)
 
     app.run()

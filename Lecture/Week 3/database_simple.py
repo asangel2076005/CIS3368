@@ -22,7 +22,7 @@ def create_con(hostname, username, user_password, dbname):
 if __name__ == "__main__":
     conn = create_con("cis3368spring.cb0eqkk045ol.us-east-1.rds.amazonaws.com",
                       "angeloangel",
-                      "serdon17",
+                      "angelopassword",
                       "cis3368springdb")
 
     cursor = conn.cursor(dictionary=True)
