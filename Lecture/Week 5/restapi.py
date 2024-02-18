@@ -93,7 +93,7 @@ if __name__ == "__main__":
                 del(cars[i])
         return "delete request successful"
 
-    @app.route("/api/cars", methods=["PUT"])  # api to update an entity instance
+    @app.route("/api/car", methods=["PUT"])  # api to update an entity instance
     def api_update_user():
         pass
         # figure this one out later
