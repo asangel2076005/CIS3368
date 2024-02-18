@@ -33,15 +33,11 @@ if __name__ == "__main__":
         }
     ]
 
-
-
-
-
     @app.route('/', methods=['GET'])  # default url without any routing
     def home():
         return "WELCOME TO OUR FIRST API"
 
-    @app.route('/api/car/all', methods=['GET'])  # get all the cars
+    @app.route('/api/car', methods=['GET'])  # get all the cars
     def api_all():
         # return cars list object into a JSON object because we can't be sure the client knows Python Lists
         return jsonify(cars)
