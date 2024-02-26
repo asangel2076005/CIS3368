@@ -46,6 +46,9 @@ if __name__ == "__main__":
     def update_inventory(user_id):
         data = request.get_json()
 
+        if not data:
+            return "No data provided"
+
         sets = []
 
         if "brand" in data.keys():
@@ -80,10 +83,7 @@ if __name__ == "__main__":
                     update_sql = f"UPDATE inventory SET {key} = '{value}' WHERE id = {user_id};"
                 execute_query(connection, update_sql)
 
-        if len(sets) == 0:
-            return "No columns to change"
-        else:
-            return "Success"
+        return "Success"
 
 
     app.run()
