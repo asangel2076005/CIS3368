@@ -2,7 +2,6 @@ import flask
 from flask import jsonify, request
 from sql_helper import create_connection, execute_read_query, execute_query
 import creds
-import parser
 
 
 if __name__ == "__main__":
