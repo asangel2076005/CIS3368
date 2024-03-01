@@ -324,10 +324,10 @@ if __name__ == "__main__":
 
         return "Update Success"
 
-    # Delete a major_code based on its code
+    # Delete a major based on its code
     @app.route("/api/major/<int:major_code>", methods=["DELETE"])
     def delete_major_code(major_code):
-        # Check if the student exists
+        # Check if the major exists
         sql = f"SELECT * FROM MAJOR WHERE MAJOR_CODE = {major_code};"
         check = execute_read_query(connection, sql)
         if not check:
