@@ -1,0 +1,15 @@
+li {
+    list-style-type: none;
+}
+
+form {
+    width: 50%;
+}
+
+li:nth-child(1) {
+    background-color: pink;
+}
+
+li:nth-child(2) {
+    background-color: yellow;
+}

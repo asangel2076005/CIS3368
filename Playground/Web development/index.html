@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="Angelo Angel">
+        <meta name="description" content="Learning how to code in HTML">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Form Practice</title>
+        <link rel="icon" href="styles/favicons/favicon-1.png" type="image/x-icon">
+        <link rel="stylesheet" href="styles/index.css">
+        <script src="scripts/index.js" defer></script>
+    </head>
+        
+    <body>
+        <main>
+            <article>
+                <form action="/my-handling-form-page" method="post">
+                    <ul>
+                        <li>
+                            <label for="facility_name">Facility Name: </label>
+                            <select name="facility_name" id="facility_name">
+                            </select>
+                        </li>
+                        <li>
+                            <label for="teacher_lname">Teacher Name: </label>
+                            <input type="text" name="teacher_lname" id="teacher_lname" list="last_names">
+                            <datalist id="last_names">
+                            </datalist>
+                        </li>
+                    </ul>
+                </form>
+            </article>
+        </main>
+    </body>
+</html>
