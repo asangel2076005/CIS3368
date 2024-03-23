@@ -1,0 +1,10 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    inline-size: 50%;
+    margin: auto;
+    background-color: pink;
+}

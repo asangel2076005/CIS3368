@@ -169,7 +169,6 @@ const datalist = document.querySelector("datalist");
 
 for (const entity of teacher) {
     const option = document.createElement('option');
-    option.value = entity['TEACHER_ID'];
     option.textContent = `${entity["TEACHER_LNAME"]} ${entity["TEACHER_FNAME"]}`;
     datalist.appendChild(option); 
 }

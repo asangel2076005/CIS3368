@@ -4,6 +4,8 @@ li {
 
 form {
     width: 50%;
+    background-color: green;
+    box-sizing: border-box;
 }
 
 li:nth-child(1) {
