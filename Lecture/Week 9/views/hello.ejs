@@ -14,6 +14,14 @@
 
     <body>
         <p>Welcome and Hello World!</p>
-        <h1><%= message %></h1>
+        <h1><%= message %></h1>    
+        <h1><%= mascots[0]["name"] %></h1>  
+        <p>
+            <% for (const entity of mascots) { %>
+                <li>
+                    <%= entity["name"] %> is my name
+                </li>
+            <% } %>
+        </p>    
     </body>
 </html>

@@ -12,10 +12,23 @@ app.set("view engine", "ejs"); // Renders responses to you
 
 const port = 8080;
 
-// When user hits home page, then we show the hello.ejs
-app.get("/", (request, response) => response.render("hello", {
-    message: "Welcome to express and EJS"
-}));
+// index page 
+app.get('/', function(request, response) {
+    // 127.0.0.1:8080/?name=Nana
+    const name = request.query.name || "Guest";
+    
+    response.render('hello', {
+        mascots: [
+            { name: 'Sammy', organization: "DigitalOcean", birth_year: 2012},
+            { name: 'Tuxedo', organization: "Linux", birth_year: 1996},
+            { name: 'Moby Dick', organization: "Docker", birth_year: 2013}
+        ],
+        tagline: "No programming concept is complete without a cute animal mascot.",
+        kinda: ["Something", "Really"],
+        message: `${name} You're bruising up my heart`,
+        mix: "Hello"
+    });
+});
 
 // Start the express application on port 8080 and print server start message
 app.listen(port, () => console.log("Application started and listening on port 8080"));
