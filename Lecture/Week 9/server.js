@@ -1,14 +1,21 @@
-// Load express module
+// Requires the express module, which is a popular web framework for Node.js used to build web applications
 const express = require("express");
 const path = require("path");
 
 // Put new express application on app variable
 const app = express();
 
+
 // Set views property and views engine
-// This is the only thing that needs to be changed when doing other projects
-app.set("views", path.resolve(__dirname, "views")); // Look for a directory called "views"
-app.set("view engine", "ejs"); // Renders responses to you
+/* 
+Sets the directory where your views (templates) are located. 
+__dirname represents the directory name of the current module (the file where this code resides). 
+It resolves the absolute path to the "views" directory.
+*/
+app.set("views", path.resolve(__dirname, "views")); 
+
+// Sets the template engine to be used. Here, it sets it to EJS, so Express will render EJS files from the "views" directory
+app.set("view engine", "ejs");
 
 const port = 8080;
 
