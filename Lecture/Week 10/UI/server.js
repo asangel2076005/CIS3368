@@ -45,41 +45,41 @@ app.get('/choose', function(req, res) {
 // about page
 app.get('/about', function(req, res) {
 
-    //local API call to my Python REST API that delivers cars
-    axios.get(`http://127.0.0.1:5000/api/car/all`)
-    .then((response)=>{
+    // //local API call to my Python REST API that delivers cars
+    // axios.get(`http://127.0.0.1:5000/api/car/all`)
+    // .then((response)=>{
         
-        var cars = response.data;
-        var tagline = "Here is the data coming from my own API";
-        console.log(cars);
-         // use res.render to load up an ejs view file
-        res.render('pages/about', {
-            cars: cars,
-            tagline: tagline
-        });
-    }); 
+    //     var cars = response.data;
+    //     var tagline = "Here is the data coming from my own API";
+    //     console.log(cars);
+    //      // use res.render to load up an ejs view file
+    //     res.render('pages/about', {
+    //         cars: cars,
+    //         tagline: tagline
+    //     });
+    // }); 
     
 
     
-    // // get multiple service calls and combine the results in 1 function
-    // axios.all([
-    //     axios.get(`http://127.0.0.1:5000/api/car/all`),
-    //     axios.get(`http://127.0.0.1:5000/api/car?id=2`)
-    // ])
-    // .then(axios.spread((firstResponse, secondResponse) => {  
+    // get multiple service calls and combine the results in 1 function
+    axios.all([
+        axios.get(`http://127.0.0.1:5000/api/car/all`),
+        axios.get(`http://127.0.0.1:5000/api/car?id=2`)
+    ])
+    .then(axios.spread((firstResponse, secondResponse) => {  
   
-    // var cars = firstResponse.data;
-    // var tagline = "Here is the data coming from my own API";
-    // var aSingleCar = secondResponse.data[0];
+    var cars = firstResponse.data;
+    var tagline = "Here is the data coming from my own API";
+    var aSingleCar = secondResponse.data[0];
 
-    // //use res.render to load up an ejs view file
-    // res.render('pages/about', {
-    //     cars: cars,
-    //     tagline: tagline,
-    //     single: aSingleCar
-    // });
-    // }))
-    // .catch(error => console.log(error)); 
+    //use res.render to load up an ejs view file
+    res.render('pages/about', {
+        cars: cars,
+        tagline: tagline,
+        single: aSingleCar
+    });
+    }))
+    .catch(error => console.log(error)); 
     
     
 });
