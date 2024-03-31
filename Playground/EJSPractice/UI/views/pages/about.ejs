@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <%- include('../partials/head'); %>
+    </head>
+        
+    <body>
+
+        <header>
+            <%- include('../partials/header'); %>
+        </header>
+
+        <main>
+            <p><%= tagline%></p>
+            <% for (const instance of student) { %>
+                <p><%= instance["STUDENT_FNAME"] %> <%= instance["STUDENT_LNAME"] %> with a GPA of <%= instance["STUDENT_GPA"] %></p>
+            <% }%>
+        </main>
+
+        <footer>
+            <%- include('../partials/footer'); %>
+        </footer>
+    </body>
+</html>
