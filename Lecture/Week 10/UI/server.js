@@ -5,7 +5,6 @@ const bodyParser  = require('body-parser');
 
 // required module to make calls to a REST API
 const axios = require('axios');
-
 app.use(bodyParser.urlencoded());
 
 // set the view engine to ejs
@@ -110,19 +109,19 @@ app.post('/process_form', function(req, res){
 
     res.render('pages/thanks.ejs', {body: req.body})
   
-  })
+});
 
-  app.post('/processdynamicform', function(req, res){
-    //go directly to thanks.ejs and show dynamic checkbox selection
-    console.log(req.body);
-    selectedID = req.body;
-    for (x in req.body) {
-        var selectedName = x;
-        console.log("selected name is: " + selectedName);
-    }
-    res.render('pages/thanks.ejs', {body: req.body})
-  
-  })
+app.post('/processdynamicform', function(req, res){
+//go directly to thanks.ejs and show dynamic checkbox selection
+console.log(req.body);
+selectedID = req.body;
+for (x in req.body) {
+    var selectedName = x;
+    console.log("selected name is: " + selectedName);
+}
+res.render('pages/thanks.ejs', {body: req.body})
+
+});
 
 
 
