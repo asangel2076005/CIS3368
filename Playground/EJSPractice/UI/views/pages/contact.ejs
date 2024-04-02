@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <%- include('../partials/head'); %>
+    </head>
+    <body>
+        <header>
+            <%- include('../partials/header'); %>
+        </header>
+
+        <main>
+            <form action="/login" method="post">
+                <h2>Sign in</h2>
+                <li>
+                    <label for="username">Username: </label>
+                    <input type="text" id="username" name="username" required>
+                </li>
+                <li>
+                    <label for="userpass">Password: </label>
+                    <input type="password" id="userpass" name="password" required>
+                </li>
+                <li>
+                    <button type="submit">Submit</button>
+                </li>
+            </form>
+        </main>
+
+        <footer>
+            <%- include('../partials/footer'); %>
+        </footer>
+    </body>
+</html>

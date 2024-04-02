@@ -46,6 +46,29 @@ app.get("/about", function(req, res) {
 });
 
 
+// Contact
+app.get("/contact", function(req, res) {
+
+    const lol = "char"
+
+    res.render("pages/contact", {
+        char: lol
+    })
+});
+
+// Rendering a form
+app.post("/login", function(req, res) {
+    const username = req.body.username;
+    const password = req.body.password;
+
+    console.log(`${username} ${password}`);
+
+    res.render("pages/thanks", {
+        username: username,
+        password: password
+    });
+});
+
 
 // Start the express application on port 8080 and print server start message
 const port = 8080;

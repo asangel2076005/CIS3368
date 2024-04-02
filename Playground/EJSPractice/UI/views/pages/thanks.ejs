@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <%- include('../partials/head'); %>
+    </head>
+    <body>
+        <header>
+            <%- include('../partials/header'); %>
+        </header>
+
+        <main>
+            Hi
+            <% if (username) {%>
+                <p>your username is: <%= username %></p>
+            <% } %>
+            <% if (password) {%>
+                <p>your password is: <%= password %></p>
+            <% } %>
+        </main>
+
+        <footer>
+            <%- include('../partials/footer'); %>
+        </footer>
+    </body>
+</html>
