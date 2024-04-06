@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    
+    <body>
+        <header>
+            <a href="/alias.ejs"></a>
+        </header>
+
+        <main>
+            <% if (locals.auth) { %>
+                <p>Welcome <%= locals.user %></p>
+            <% } %>
+
+            <% if (!locals.auth) { %>
+                <p><%= locals.user %> You are not authorized</p>
+            <% } %>
+
+            <% if (locals.selectedPerson) { %>
+                <p>Value of the person: <%= selectedPerson %></p>
+            <% } %>
+
+            <% if (locals.aliases) { %>
+                <p>Alias Names: </p>
+                <% aliases.forEach(function(alias) { %>
+                    <p><%= alias %></p>
+                <% }); %>
+            <% } %>
+        </main>
+    </body>
+</html>
