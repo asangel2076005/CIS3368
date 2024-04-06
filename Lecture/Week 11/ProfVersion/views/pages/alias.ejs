@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+</head>
+
+<body class="container">
+
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+
+    <main>
+        <div>
+            <form action="/process_form" method="post">
+                <h2>
+                    Search for Aliases
+                </h2>
+                <div class="form-group">
+                    <label class="form-label" > Hero Name</label>
+                    <input type="text" id="hero" name="hero" class="form-control" placeholder="Hero Name" required>
+                </div>
+                <div>
+                    <select name="selectedPerson" id="selectedPerson">
+                        <% locals.people.forEach(function(user){ %>
+                            <option value="<%= user.id %>"><%= user.first_name %> <%= user.last_name %> </option>
+                        <%}); %>
+                    </select>
+                </div>
+                <input class="btn btn-lg btn-primary btn-block" type="submit">
+            </form>
+        </div>
+    </main>
+
+    
+
+
+
+
+
+
+
+    
+
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+
+</body>
+
+</html>
