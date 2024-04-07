@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="Angelo Angel">
+        <meta name="description" content="Learning how to code in HTML">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Homework 3</title>
+        <link rel="stylesheet" href="/index.css" type="text/css">
+        <script src="/script.js" defer></script>
+    </head>
+
+    <body>
+        <h1>Comment Overview</h1>
+        <div class="button-container"><button class="button-52">Load</button></div>
+        
+
+        <div class="comment hidden">
+            <% if (locals.comment) { %>
+                <% for (let instance = 0; instance < 10; instance++) { %>
+                    <p><strong><%= comment[instance]["user"]["username"] %>:</strong> <%= comment[instance]["body"] %></p>
+                    <br>
+                <% }%>
+            <% } %>
+            <% if (!locals.comment) { %>
+                <p>Comments are unavailable</p>
+            <% } %>
+        </div>
+    </body>
+</html>

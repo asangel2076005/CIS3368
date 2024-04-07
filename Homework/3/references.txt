@@ -1,0 +1,5 @@
+Allow ejs to read scripts and css files:
+https://www.youtube.com/watch?v=lmCq2ZtoKQs&ab_channel=ByteGrad
+
+button style:
+https://getcssscan.com/css-buttons-examples
