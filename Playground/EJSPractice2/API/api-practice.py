@@ -85,16 +85,20 @@ if __name__ == "__main__":
         sql = "SELECT * FROM MAJOR;"
         major = execute_read_query(connection, sql)
         major_codes = []
+        major_names = []
         for code in major:
             major_codes.append(str(code["MAJOR_CODE"]))
+        
+        for code in major:
+            major_names.append(str(code["MAJOR_NAME"]))
 
         # Putting a major_code outside of what the database has will lead to errors
         if str(request_data["MAJOR_CODE"]) not in major_codes:
             return f"Invalid Major Code.\n" \
-                   f"Choose between {', '.join(major_codes)}"
+                   f"Choose between {', '.join(major_names)}"
 
         # Error if student GPA is less than 0 or greater than 4
-        if (request_data["STUDENT_GPA"] < 0) or (request_data["STUDENT_GPA"] > 4):
+        if float(request_data["STUDENT_GPA"] < 0) or float(request_data["STUDENT_GPA"] > 4):
             return "GPA must be between 0 and 4"
 
         # If student's GPA is less than the required GPA of the major, error will show; otherwise, insertion into
@@ -107,7 +111,7 @@ if __name__ == "__main__":
                     sql = f"INSERT INTO STUDENT (STUDENT_FNAME, STUDENT_LNAME, STUDENT_GPA, MAJOR_CODE) " \
                           f"VALUES ('{request_data['STUDENT_FNAME']}', '{request_data['STUDENT_LNAME']}', {request_data['STUDENT_GPA']}, {request_data['MAJOR_CODE']});"
                     execute_query(connection, sql)
-                    return "Update Success"
+                    return "Addition Success"
 
     # http://127.0.0.1:5000/api/student/1 or /2
     # Update a student's information
